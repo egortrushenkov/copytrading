@@ -1,0 +1,28 @@
+{
+  "name": "copytrading_polymarket",
+  "version": "1.0.0",
+  "description": "Бот для копирования сделок выбранных трейдеров на [Polymarket](https://polymarket.com).\r Следит за кошельками-лидерами, повторяет их сделки со своего кошелька с заданным множителем\r и показывает статистику на веб-дашборде.",
+  "homepage": "https://github.com/egortrushenkov/copytrading#readme",
+  "bugs": {
+    "url": "https://github.com/egortrushenkov/copytrading/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egortrushenkov/copytrading.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^26.6.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
