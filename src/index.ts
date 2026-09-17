@@ -6,11 +6,6 @@ const users: AddressMap = {
     "address-copy": "0x2d99e29c4f066ba32098c65e4c7454b277d94ca3"
 };
 
-Object.values(users).map(async (address) => {
-    const trades = await getTrades(address);
-    console.log(`Trades for ${address}:`, trades);
-});
-
 for (const [user, address] of Object.entries(users)) {
     getTrades(address).then((trades) => {
         console.log(`Trades for ${user} (${address}):`, trades);

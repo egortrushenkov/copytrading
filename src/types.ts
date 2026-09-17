@@ -29,8 +29,6 @@ export interface Pagination {
   next_cursor: string;
 }
 
-
-
 export interface AddressMap {
     [key: string]: string;
 }
