@@ -6,12 +6,30 @@
 
 ## Статус
 
-Проект на ранней стадии. Сейчас есть только скрипт, который получает открытые позиции
-кошельков через Polymarket Data API.
+Проект на ранней стадии. Сейчас это один пакет на TypeScript, который получает сделки
+кошельков через Polymarket Data API (`/v2/trades`) и выводит их в консоль.
 
-## Планируемая архитектура
+Текущая структура:
 
-Монорепо на TypeScript:
+```
+src/
+  index.ts                       точка входа
+  types.ts                       типы ответов Data API (Trade, TradesResponse, Pagination)
+  polymarket/dataApi/getTrades.ts запрос сделок по адресу кошелька
+```
+
+## План
+
+1. Типы для ответа API и вынос запросов в отдельный модуль. Сделано.
+2. Цикл слежения за лидером: опрос сделок раз в несколько секунд, вывод только новых.
+3. База данных SQLite + Drizzle, таблица `leader_trades`, чтобы не копировать сделки повторно после перезапуска.
+4. Адреса и ключи в `.env`.
+5. Отправка зеркальных ордеров через `@polymarket/clob-client`.
+6. Дашборд на Next.js, переезд на монорепо.
+
+## Целевая архитектура
+
+Монорепо на TypeScript (npm workspaces):
 
 ```
 apps/bot/             Node-процесс: следит за лидерами, копирует сделки, пишет в БД
@@ -37,12 +55,18 @@ packages/polymarket/  обёртки над Data API и CLOB-клиентом
 - CLOB API и SDK: https://docs.polymarket.com/developers/CLOB/introduction
 - TypeScript SDK: https://github.com/Polymarket/clob-client
 
-## Запуск (текущая версия)
+## Запуск
+
+Нужен Node.js 20+.
 
 ```bash
-pip install requests
-python main.py
+npm install
+npm run start        # один запуск
+npm run dev          # перезапуск при изменении файлов
+npm run typecheck    # проверка типов без компиляции
 ```
+
+Адреса кошельков пока заданы в `src/index.ts`, позже переедут в `.env`.
 
 ## Безопасность
 
