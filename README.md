@@ -6,12 +6,12 @@
 
 ## Статус
 
-Проект на ранней стадии. Сейчас есть скелет монорепо и скрипт в `apps/bot`, который получает
-открытые позиции кошельков через Polymarket Data API.
+Проект на ранней стадии. Сейчас есть только скрипт, который получает открытые позиции
+кошельков через Polymarket Data API.
 
-## Архитектура
+## Планируемая архитектура
 
-Монорепо на TypeScript (npm workspaces):
+Монорепо на TypeScript:
 
 ```
 apps/bot/             Node-процесс: следит за лидерами, копирует сделки, пишет в БД
@@ -37,15 +37,11 @@ packages/polymarket/  обёртки над Data API и CLOB-клиентом
 - CLOB API и SDK: https://docs.polymarket.com/developers/CLOB/introduction
 - TypeScript SDK: https://github.com/Polymarket/clob-client
 
-## Запуск
-
-Нужен Node.js 20+.
+## Запуск (текущая версия)
 
 ```bash
-npm install
-cp .env.example .env      # заполнить значения
-npm run bot               # запускает apps/bot в режиме watch
-npm run typecheck         # проверка типов во всех пакетах
+pip install requests
+python main.py
 ```
 
 ## Безопасность
