@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "apps/bot" },
+    { "path": "packages/db" },
+    { "path": "packages/polymarket" }
+  ]
+}
