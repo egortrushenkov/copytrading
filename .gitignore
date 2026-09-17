@@ -24,3 +24,6 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# typescript build cache
+*.tsbuildinfo
